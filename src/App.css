@@ -1,1 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=melodrama@200,300,400,500,600,700&display=swap');
+
 @import "tailwindcss";
+
+
+@theme {
+  
+  --font-unbounded: "Unbounded", sans-serif;
+  --font-clash: "Clash Display", sans-serif;
+  --font-melodrama: "Melodrama", sans-serif;
+}
+
+/* custom font class */
+.unbounded-normal {
+  font-family: var(--font-unbounded);
+  font-weight: 200;
+}
+
+.unbounded-bold {
+  font-family: var(--font-unbounded);
+  font-weight: 600; 
+}
+
+.clash-title {
+  font-family: var(--font-clash);
+  font-weight: 500; 
+}
+.melodrama-regular{
+    font-family: var(--font-melodrama);
+    font-weight: 500;
+}

@@ -2,22 +2,18 @@ import React from "react";
 import Plus from "../components/Plus";
 import Line from "../components/Line";
 import Menu from "../components/Menu";
+import Star from "../components/Star";
 import Wheel from "../components/Wheel";
 
 const AllLabs = () => {
   return (
     <>
       <div className="bg-black w-screen h-screen relative overflow-hidden">
-        
-       
         <div className="absolute inset-0 z-0 flex items-center justify-center">
           <Wheel />
         </div>
 
-       
         <div className="fixed inset-0 pointer-events-none z-10">
-          
-         
           <Plus className="absolute top-4 left-4" size={20} thickness={2} />
           <Plus className="absolute top-4 right-4" size={20} thickness={2} />
 
@@ -35,7 +31,6 @@ const AllLabs = () => {
             <Line variant="horizontal" thickness={1} />
           </div>
 
-         
           <div className="z-50 absolute top-8 left-0 right-0 flex justify-center pointer-events-auto">
             <Menu />
           </div>

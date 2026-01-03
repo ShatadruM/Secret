@@ -3,15 +3,15 @@ import Plus from "../components/Plus";
 import Line from "../components/Line";
 import Menu from "../components/Menu";
 import Star from "../components/Star";
-import HomeContent from "./HomeContent";
+import HistoryContent from "./HistoryContent";
 
 const Home = () => {
   return (
     <>
       <div className="bg-black w-screen h-screen relative">
         {/* HOME CONTENT*/}
-        <div className="absolute inset-0 z-0">
-          <HomeContent />
+        <div className="absolute inset-0 z-0 flex items-center justify-center">
+          <HistoryContent/>
         </div>
 
         {/* BORDER ELEMENTS */}
