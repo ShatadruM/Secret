@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Line from '../components/Line';
 import Star from '../components/Star';
 
-// Register ScrollTrigger
+
 gsap.registerPlugin(ScrollTrigger);
 
 // Assets
@@ -62,18 +62,17 @@ const historyData = [
 
 const HistoryContent = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  
-  // Refs for GSAP
+
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
   const horizontalRef = useRef(null);
   
-  // Refs for Text Animation
+ 
   const titleRef = useRef(null);
   const descRef = useRef(null);
   const prevYearRef = useRef(historyData[0].year);
 
-  // 1. HORIZONTAL SCROLL LOGIC
+ 
   useEffect(() => {
     const section = sectionRef.current;
     const horizontalContainer = horizontalRef.current;
@@ -93,10 +92,10 @@ const HistoryContent = () => {
     ScrollTrigger.create({
       trigger: triggerRef.current,
       start: "top top",
-      end: "+=3000", // Controls how "long" the scroll feels (3000px of vertical scroll)
+      end: "+=3000", 
       pin: true,
       animation: tween,
-      scrub: 1, // Smooth scrubbing effect
+      scrub: 1, 
       invalidateOnRefresh: true,
       onUpdate: (self) => {
         // Calculate which item is currently in the "center" based on scroll progress
@@ -121,17 +120,17 @@ const HistoryContent = () => {
   }, []);
 
 
-  // 2. TEXT ANIMATION LOGIC
+  
   useEffect(() => {
     const currentYear = historyData[activeIndex].year;
     
-    // Always animate the description
+    // description animation
     gsap.fromTo(descRef.current,
       {  opacity: 0, filter: "blur(5px)" },
       {  opacity: 1, filter: "blur(0px)", duration: 0.5, ease: "power2.out" }
     );
 
-    // Only animate the Title if the Year has changed
+    // Title animation
     if (currentYear !== prevYearRef.current) {
         gsap.fromTo(titleRef.current,
             {  opacity: 0, filter: "blur(5px)" },
@@ -143,12 +142,12 @@ const HistoryContent = () => {
   }, [activeIndex]);
 
   return (
-    // This outer div is what gets Pinned
-    <div ref={triggerRef} className='bg-black relative overflow-hidden'>
+    
+    <div ref={triggerRef} className='bg-transparent relative overflow-hidden'>
       
       <div ref={sectionRef} className='h-screen w-full flex flex-col justify-center'>
         
-        {/* --- TOP: TEXT SECTION --- */}
+        
         <div className='flex flex-col gap-4 items-center mx-9 transition-colors relative z-10'>
           
           {/* Title Container */}
@@ -167,7 +166,7 @@ const HistoryContent = () => {
           </div>
         </div>
 
-        {/* --- MIDDLE: DIVIDERS --- */}
+       
         <div className=' relative flex h-10 my-8 w-full px-20 justify-between items-center z-10'>
           <div className='w-2/5'> <Line variant="horizontal" thickness={2} /></div>
           <div className='w-1/5 flex justify-center'>
@@ -176,11 +175,11 @@ const HistoryContent = () => {
           <div className='w-2/5'> <Line variant="horizontal" thickness={2} /></div>
         </div>
 
-        {/* BOTTOM: HORIZONTAL SCROLL AREA */}
+        {/* HORIZONTAL SCROLL AREA */}
         <div className='w-full h-[45vh] z-20 flex items-center overflow-visible'>
           <div 
             ref={horizontalRef} 
-            className='flex flex-row gap-12 px-[50vw]' // Large Padding ensures first image starts in center
+            className='flex flex-row gap-12 px-[40vw]' 
             style={{ width: 'fit-content' }}
           >
             {historyData.map((item, index) => (

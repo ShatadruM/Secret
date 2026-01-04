@@ -64,7 +64,7 @@ export default function ScrollTextEffect() {
   const secondText = "SRM AP's first Student led Interdisciplinary Lab. Started in 2018. Where tech meets Innovation";
   
   return (
-    <div className="bg-black">
+    <div className="bg-transparent">
       <div ref={containerRef} className="h-screen relative overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center px-4">
           

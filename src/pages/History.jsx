@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <>
       {/* 1. CHANGED: Use min-h-screen so the page can be taller than the viewport */}
-      <div className="bg-black w-full min-h-screen relative">
+      <div className="bg-transparent w-full min-h-screen relative">
         
         {/* 2. CHANGED: Removed 'absolute inset-0'. 
             This allows HomeContent to push the page height down, creating a scrollbar. */}

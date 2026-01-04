@@ -8,7 +8,7 @@ import Wheel from "../components/Wheel";
 const AllLabs = () => {
   return (
     <>
-      <div className="bg-black w-screen h-screen relative overflow-hidden">
+      <div className="bg-transparent w-screen h-screen relative overflow-hidden">
         <div className="absolute inset-0 z-0 flex items-center justify-center">
           <Wheel />
         </div>

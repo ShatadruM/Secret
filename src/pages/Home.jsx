@@ -7,17 +7,19 @@ import Location from "../components/Location";
 import Time from "../components/Time"
 import HomeContent from "./HomeContent";
 
+//import FireflyBackground from "./FireflyBackground";
+
 const Home = () => {
   return (
     <>
-      <div className="bg-black w-screen h-screen relative">
+      <div className="bg-transparent w-screen h-screen relative">
         {/* HOME CONTENT*/}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-1">
           <HomeContent />
         </div>
 
         {/* BORDER ELEMENTS */}
-        <div className=" fixed inset-0">
+        <div className=" fixed inset-0 z-2">
           {/* TOP LEFT */}
           <Plus className="absolute top-4 left-4" size={20} thickness={2} />
           <div className="absolute top-12 left-12 lg:top-18 lg:left-24 z-10">
