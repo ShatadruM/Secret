@@ -3,6 +3,8 @@ import Plus from "../components/Plus";
 import Line from "../components/Line";
 import Menu from "../components/Menu";
 import Star from "../components/Star";
+import Location from "../components/Location";
+import Time from "../components/Time"
 import HomeContent from "./HomeContent";
 
 const Home = () => {
@@ -18,6 +20,10 @@ const Home = () => {
         <div className=" fixed inset-0">
           {/* TOP LEFT */}
           <Plus className="absolute top-4 left-4" size={20} thickness={2} />
+          <div className="absolute top-12 left-12 lg:top-18 lg:left-24 z-10">
+            
+           <Time/>
+          </div>
 
           {/* TOP RIGHT */}
           <Plus className="absolute top-4 right-4" size={20} thickness={2} />
@@ -88,6 +94,10 @@ const Home = () => {
 
           {/* BOTTOM RIGHT */}
           <Plus className="absolute bottom-4 right-4" size={20} thickness={2} />
+
+           <div className="absolute bottom-12 right-12 lg:bottom-18 lg:right-24 z-10">
+            <Location/>
+          </div>
         </div>
       </div>
     </>

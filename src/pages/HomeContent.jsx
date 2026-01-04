@@ -69,7 +69,7 @@ export default function ScrollTextEffect() {
         <div className="absolute inset-0 flex items-center justify-center px-4">
           
           {/* First Text */}
-          <div ref={firstTextRef} className="text-4xl wrap md:text-9xl unbounded-bold font-bold tracking-wider text-center text-white">
+          <div ref={firstTextRef} className="text-4xl wrap md:text-9xl clash-title font-bold tracking-wider text-center text-white">
             {firstText}
             <div className='flex mt-6 unbounded-normal text-xs md:text-5xl justify-between'>
               <div>Students</div>

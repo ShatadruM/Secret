@@ -35,7 +35,7 @@ export default function Menu({ className = '' }) {
       <div className={`relative flex items-center justify-center ${className} z-50`}>
 
        
-        {/* DESKTOP DIAL (Hidden on Mobile)                */}
+        {/* DESKTOP DIAL (Hidden on Mobile)*/}
         
         <div 
           className={`
@@ -126,7 +126,9 @@ export default function Menu({ className = '' }) {
         
         <div className={`
             md:hidden
-            absolute top-36
+            absolute 
+            /* Changed top-36 to top-28 to fit closer to the smaller button */
+            top-28
             flex flex-col
             items-center
             w-80
@@ -147,9 +149,9 @@ export default function Menu({ className = '' }) {
                 <button 
                   onClick={() => handleNav(item.path)}
                   className="
-                    w-full py-8
+                    w-full py-6
                     text-white 
-                    text-3xl font-bold tracking-widest text-center
+                    text-2xl font-bold tracking-widest text-center
                     hover:bg-white hover:text-black 
                     transition-colors
                   "
@@ -168,9 +170,16 @@ export default function Menu({ className = '' }) {
         <div className="
           z-50
           absolute 
-          -bottom-10 
-          w-80
-          h-32 
+          /* MOBILE SIZES */
+          -bottom-6 
+          w-60
+          h-24 
+          
+          /* DESKTOP SIZES (Restored to original) */
+          md:-bottom-10
+          md:w-80
+          md:h-32
+
           bg-black 
           rounded-b-full
           rounded-t-none 
@@ -182,16 +191,25 @@ export default function Menu({ className = '' }) {
           className={`
             z-50
             absolute 
-            -bottom-12 
-            w-56 
-            h-28 
+
+            /* MOBILE SIZES */
+            -bottom-8 
+            w-40 
+            h-20
+            text-lg
+
+            /* DESKTOP SIZES (Restored to original) */
+            md:-bottom-12
+            md:w-56 
+            md:h-28 
+            md:text-xl
+
             bg-black 
             text-white
             rounded-t-none
             rounded-b-full
             flex items-center justify-center
             border border-white
-            text-xl
             transition-all duration-300
             
             hover:bg-white 
