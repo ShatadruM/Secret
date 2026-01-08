@@ -1,25 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Wheel = () => {
+const Wheel = ({ sections, onSliceClick }) => {
+  
   // 1. Configuration
   const size = 500; 
   const cx = size / 2; 
   const cy = size / 2; 
   const radius = 200; 
-  const textRadius = 140; 
-  const numSections = 5;
+  const iconRadius = 140; 
+  const iconSize = 140; 
+  
+  const numSections = sections.length; 
   const angleStep = 360 / numSections; 
 
-  // 2. Placeholder Data
-  const sections = [
-    { title: "Tesla"},
-    { title: "Pausch"},
-    { title: "Norman" },
-    { title: "Satoshi"},
-    { title: "McCarthy"},
-  ];
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  // 3. Helper: Math for coordinates
+  // Helpers
   const getCoordinatesForAngle = (angle, offsetRadius = radius) => {
     const rads = (angle - 90) * (Math.PI / 180.0);
     return {
@@ -28,7 +24,6 @@ const Wheel = () => {
     };
   };
 
-  // 4. Helper: Create SVG Path
   const createSlicePath = (startAngle, endAngle) => {
     const start = getCoordinatesForAngle(startAngle);
     const end = getCoordinatesForAngle(endAngle);
@@ -43,72 +38,91 @@ const Wheel = () => {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto p-4 flex items-center justify-center">
+    <div className="w-full max-w-3xl p-4 flex items-center justify-center">
       <svg 
         viewBox={`0 0 ${size} ${size}`} 
         className="w-full h-auto drop-shadow-2xl overflow-visible"
       >
+        <defs>
+          {sections.map((item, index) => (
+            <radialGradient
+              key={`grad-${index}`}
+              id={`gradient-${index}`}
+              cx={cx} cy={cy}
+              r={radius}
+              gradientUnits="userSpaceOnUse"
+              className={item.color} 
+            >
+              <stop offset="0%" stopColor="currentColor" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
+            </radialGradient>
+          ))}
+        </defs>
+
         {sections.map((item, index) => {
           const startAngle = index * angleStep;
           const endAngle = (index + 1) * angleStep;
           const midAngle = startAngle + (angleStep / 2);
-          const textCoords = getCoordinatesForAngle(midAngle, textRadius);
+          const iconCoords = getCoordinatesForAngle(midAngle, iconRadius);
+          
+          const isHovered = hoveredIndex === index;
+          const pathData = createSlicePath(startAngle, endAngle);
 
           return (
-            // Added scale and origin on hover to the group for a "pop" effect
             <g 
               key={index} 
-              className="
+              onClick={() => onSliceClick(index)}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className={`
                 group cursor-pointer 
                 transition-transform duration-300 ease-out 
                 origin-[250px_250px] 
                 hover:scale-105
-              "
+                ${isHovered ? item.color : 'text-white'}
+              `}
             >
-              
-              {/* THE SLICE SHAPE */}
+              {/* LAYER 1: The Gradient Fill (Animated) */}
               <path
-                d={createSlicePath(startAngle, endAngle)}
-                className="
-                  fill-transparent 
-                  stroke-white 
-                  stroke-2 
-                  transition-all 
-                  duration-300 
-                  ease-out
-                  group-hover:stroke-[6px] 
-                  group-hover:fill-white/10
-                "
+                d={pathData}
+                fill={`url(#gradient-${index})`}
+                className={`
+                  stroke-none 
+                  transition-opacity duration-500 ease-in-out /* Smooth Fade Logic */
+                  ${isHovered ? 'opacity-100' : 'opacity-0'}  /* Trigger */
+                `}
+              />
+
+              {/* LAYER 2: The White Border (Static) */}
+              <path
+                d={pathData}
+                fill="transparent"
+                className="stroke-2 stroke-white pointer-events-none" 
               />
               
-              {/* TEXT CONTENT */}
-              <text
-                x={textCoords.x}
-                y={textCoords.y}
-                textAnchor="middle" 
-                dominantBaseline="middle" 
-                className="fill-white pointer-events-none"
-              >
-                <tspan x={textCoords.x} dy="-0.6em" className="font-bold text-xl font-sans tracking-wider">
-                  {item.title}
-                </tspan>
-                <tspan x={textCoords.x} dy="1.4em" className="text-xs font-sans opacity-70 uppercase tracking-widest">
-                  {item.subtitle}
-                </tspan>
-              </text>
+              {/* LAYER 3: The Icon */}
+              <item.Component
+                x={iconCoords.x - (iconSize / 2)}
+                y={iconCoords.y - (iconSize / 2)}
+                width={iconSize}
+                height={iconSize}
+                className="
+                    pointer-events-none 
+                    text-white 
+                    [&_path]:fill-current
+                    drop-shadow-lg
+                "
+              />
             </g>
           );
         })}
 
-        {/* CENTER HUB */}
-        {/* Radius reduced to 25 (was radius * 0.2 = 40) */}
         <circle 
           cx={cx} 
           cy={cy} 
           r={25} 
-          className="fill-black stroke-white stroke-2 pointer-events-none"
+          className="fill-black stroke-white stroke-2 pointer-events-none z-50 relative"
         />
-        
       </svg>
     </div>
   );

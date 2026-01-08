@@ -7,7 +7,6 @@ import Star from '../components/Star';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Assets
 import Image1 from '../assets/image1.png'; 
 import Image2 from '../assets/image2.png';
 import Image3 from '../assets/image3.png';
@@ -199,7 +198,7 @@ const HistoryContent = () => {
                     className="w-full h-full object-cover"
                 />
                 
-                {/* Overlay for inactive slides */}
+               
                 <div className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${index === activeIndex ? 'opacity-0' : 'opacity-100'}`} />
               </div>
             ))}
