@@ -129,12 +129,12 @@ const AllLabsContent = () => {
             {/* Text Content Wrapper */}
             <div ref={textRef} className="relative z-10 flex flex-col items-center md:items-end">
                 {/* Title: Smaller on mobile */}
-                <h1 className="clash-title text-5xl md:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight">
+                <h1 className="clash-title text-5xl md:text-8xl font-bold text-white mb-4 md:mb-6 leading-tight">
                    {activeData.title}
                 </h1>
                 
                 {/* Description: Smaller text on mobile */}
-                <p className="melodrama-regular text-base md:text-xl text-zinc-300 leading-relaxed max-w-sm md:max-w-lg mb-6 md:mb-8">
+                <p className="unbounded-normal text-base md:text-xl text-zinc-300 leading-relaxed max-w-sm md:max-w-lg mb-6 md:mb-8">
                    {activeData.desc}
                 </p>
 
