@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Register the plugin once outside the component
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ScrollTextEffect() {
@@ -10,9 +10,9 @@ export default function ScrollTextEffect() {
   const secondTextRef = useRef(null);
   const containerRef = useRef(null);
   
-  // useLayoutEffect is preferred over useEffect for GSAP to prevent visual "flashing"
+  
   useLayoutEffect(() => {
-    // Create a gsap context for easy cleanup
+    
     let ctx = gsap.context(() => {
       
       // Create timeline
@@ -23,7 +23,7 @@ export default function ScrollTextEffect() {
           end: '+=2000',
           scrub: 1,
           pin: true,
-          // markers: true, // Uncomment for debugging
+          
         }
       });
       
@@ -53,12 +53,12 @@ export default function ScrollTextEffect() {
         '-=0.2'
       );
 
-    }, containerRef); // Scope selector to this container
+    }, containerRef); 
 
-    // Cleanup function: reverts all animations/triggers created in this context
+    
     return () => ctx.revert();
     
-  }, []); // Empty dependency array
+  }, []); 
   
   const firstText = "NEXT TECH LAB";
   const secondText = "SRM AP's first Student led Interdisciplinary Lab. Started in 2018. Where tech meets Innovation";
@@ -91,7 +91,7 @@ export default function ScrollTextEffect() {
         </div>
       </div>
       
-      {/* Spacer to allow scrolling past the pinned section */}
+     
       <div className="h-screen bg-black"></div>
     </div>
   );

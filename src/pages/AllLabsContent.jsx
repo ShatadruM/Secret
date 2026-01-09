@@ -58,7 +58,7 @@ const AllLabsContent = () => {
   const bgSvgRef = useRef(null);
 
   useGSAP(() => {
-    // 1. Text Animation: Blur + Fade In
+    // Text Animation
     gsap.fromTo(textRef.current.children, 
       { 
         opacity: 0, 
@@ -75,7 +75,7 @@ const AllLabsContent = () => {
       }
     );
 
-    // 2. Background SVG Animation
+    // Background SVG Animation
     gsap.fromTo(bgSvgRef.current, 
       { 
         opacity: 0, 
@@ -96,9 +96,9 @@ const AllLabsContent = () => {
   return (
     <div ref={containerRef} className='w-full h-full min-h-screen flex flex-col md:flex-row justify-start items-center overflow-hidden py-10 md:py-0'>
         
-        {/* === SECTION 1: WHEEL (Top on Mobile, Left on Desktop) === */}
+       
         <div className='w-full md:w-1/2 h-auto flex justify-center z-20 order-1'>
-            {/* Scaled down slightly on mobile to fit better */}
+           
             <div className="scale-100 md:scale-275">
                 <Wheel 
                   sections={sections} 
@@ -107,11 +107,8 @@ const AllLabsContent = () => {
             </div>
         </div>
 
-        {/* === SECTION 2: CONTENT (Bottom on Mobile, Right on Desktop) === */}
         <div className='relative w-full md:w-1/2 h-full flex flex-col justify-center items-center md:items-end px-6 md:px-16 z-10 text-center md:text-right order-2 mt-8 md:mt-0'>
             
-            {/* Background SVG Wrapper */}
-            {/* Mobile: Centered | Desktop: Pushed Right */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:left-auto md:right-0 md:translate-x-1/3 pointer-events-none">
                 <div ref={bgSvgRef}> 
                     <activeData.Component 

@@ -3,24 +3,23 @@ import Plus from "../components/Plus";
 import Line from "../components/Line";
 import Menu from "../components/Menu";
 import Star from "../components/Star";
-import Time from "../components/Time";
 import Location from "../components/Location";
-import HistoryContent from "./HistoryContent";
+import Time from "../components/Time"
+import TeslaContent from "./TeslaContent";
 
-const Home = () => {
+//import FireflyBackground from "./FireflyBackground";
+
+const Tesla = () => {
   return (
     <>
-      
-      <div className="bg-transparent w-full min-h-screen relative">
-        
-       
-        <div className="relative z-0">
-          <HistoryContent />
+      <div className="bg-transparent w-screen h-screen relative">
+        {/* HOME CONTENT*/}
+        <div className="absolute inset-0 z-1">
+          <TeslaContent />
         </div>
 
-        
-        <div className="fixed inset-0 pointer-events-none">
-          
+        {/* BORDER ELEMENTS */}
+        <div className=" fixed inset-0 z-2">
           {/* TOP LEFT */}
           <Plus className="absolute top-4 left-4" size={20} thickness={2} />
           <div className="absolute top-12 left-12 lg:top-18 lg:left-24 z-10">
@@ -31,14 +30,13 @@ const Home = () => {
           {/* TOP RIGHT */}
           <Plus className="absolute top-4 right-4" size={20} thickness={2} />
 
-         
           <div className="absolute top-12 right-12 lg:top-18 lg:right-24 flex gap-5 z-10">
+            
             <Star className="w-4 h-4 md:w-5 md:h-5 lg:w-10 lg:h-10 text-white" />
             <Star className="w-4 h-4 md:w-5 md:h-5 lg:w-10 lg:h-10 text-white" />
             <Star className="w-4 h-4 md:w-5 md:h-5 lg:w-10 lg:h-10 text-white" />
           </div>
 
-          {/* Right Vertical Line */}
           <div
             className="
               p-[11px]
@@ -52,7 +50,6 @@ const Home = () => {
             <Line variant="vertical" thickness={2} />
           </div>
 
-          {/* Left Vertical Line */}
           <div
             className="
               p-[11px]
@@ -69,7 +66,6 @@ const Home = () => {
           {/* BOTTOM LEFT */}
           <Plus className="absolute bottom-4 left-4" size={20} thickness={2} />
 
-          {/* Bottom Horizontal Line */}
           <div
             className="
               p-[11px]
@@ -82,9 +78,8 @@ const Home = () => {
             <Line variant="horizontal" thickness={1} />
           </div>
 
-          {/* TOP MENU & LINE */}
-          {/* Note: Added pointer-events-auto to Menu so buttons still work */}
-          <div className="z-50 absolute top-8 left-0 right-0 flex justify-center pointer-events-auto">
+          {/*top line*/}
+          <div className="z-50 absolute top-8 left-0 right-0 flex justify-center">
             <Menu />
           </div>
           <div
@@ -101,7 +96,8 @@ const Home = () => {
 
           {/* BOTTOM RIGHT */}
           <Plus className="absolute bottom-4 right-4" size={20} thickness={2} />
-          <div className="absolute bottom-12 right-12 lg:bottom-18 lg:right-24 z-10">
+
+           <div className="absolute bottom-12 right-12 lg:bottom-18 lg:right-24 z-10">
             <Location/>
           </div>
         </div>
@@ -110,4 +106,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Tesla;

@@ -12,6 +12,23 @@
   --font-melodrama: "Melodrama", sans-serif;
 }
 
+@layer utilities {
+  .text-title {
+    font-size: 5rem;       
+    line-height: 1;
+
+    @media (width >= 768px) {
+      font-size: 8rem;
+      line-height: 0.9;
+    }
+
+    @media (width >= 1024px) {
+      font-size: 12rem;
+      line-height: 0.85;
+    }
+  }
+}
+
 /* custom font class */
 .unbounded-normal {
   font-family: var(--font-unbounded);
@@ -48,3 +65,5 @@ html.lenis, html.lenis body {
 .lenis.lenis-stopped {
   overflow: hidden;
 }
+
+

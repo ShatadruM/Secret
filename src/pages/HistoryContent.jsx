@@ -113,7 +113,7 @@ const HistoryContent = () => {
     });
 
     return () => {
-      // Clean up ScrollTrigger on unmount
+      
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
   }, []);
